@@ -1,0 +1,36 @@
+import java.util.Timer;
+import java.util.TimerTask;
+
+/**
+ *Run a bat every 60 minutes
+ * @author andres
+ */
+
+    
+
+
+public class personal {
+    public static void main(String arglist[]) {
+    Timer timer;
+    timer = new Timer();
+
+    TimerTask task = new TimerTask() {
+        int tic=0;
+
+        @Override
+        public void run()
+        {
+            if (tic%2==0)
+            Runtime.getRuntime().exec("cmd /c start C:\\Users\\User\\Desktop\\delpersonal.bat");
+            else
+            Runtime.getRuntime().exec("cmd /c start C:\\Users\\User\\Desktop\\delpersonal.bat");
+            tic++;
+        }
+        };
+        // Empezamos dentro de 10ms y luego lanzamos la tarea cada 1000ms
+    timer.schedule(task, 10, 3600000);
+    }
+}
+
+
+
