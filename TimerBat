@@ -1,8 +1,16 @@
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 /**
- *Run a bat every 60 minutes
+ *
  * @author andres
  */
 
@@ -21,9 +29,17 @@ public class personal {
         public void run()
         {
             if (tic%2==0)
-            Runtime.getRuntime().exec("cmd /c start C:\\Users\\User\\Desktop\\delpersonal.bat");
+            try {
+                Runtime.getRuntime().exec("cmd /c start C:\\delpersonal.bat");
+            } catch (IOException ex) {
+                Logger.getLogger(personal.class.getName()).log(Level.SEVERE, null, ex);
+            }
             else
-            Runtime.getRuntime().exec("cmd /c start C:\\Users\\User\\Desktop\\delpersonal.bat");
+            try {
+                Runtime.getRuntime().exec("cmd /c start C:\\delpersonal.bat");
+            } catch (IOException ex) {
+                Logger.getLogger(personal.class.getName()).log(Level.SEVERE, null, ex);
+            }
             tic++;
         }
         };
@@ -31,6 +47,3 @@ public class personal {
     timer.schedule(task, 10, 3600000);
     }
 }
-
-
-
